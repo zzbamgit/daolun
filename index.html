@@ -1107,6 +1107,8 @@ function refreshTagView() {
 const SK = { token: 'mn-sync-token', repo: 'mn-sync-repo', last: 'mn-sync-last', dirty: 'mn-sync-dirty' };
 const sget = (k, d) => { try { const v = localStorage.getItem(k); return v == null ? d : v; } catch (e) { return d; } };
 const sset = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+// GitHub username changed: bambusaceae → zzbamgit
+{ const r = sget(SK.repo, ''); if (r.startsWith('bambusaceae/')) sset(SK.repo, r.replace(/^bambusaceae\//, 'zzbamgit/')); }
 let syncSt = { busy: false, error: '' }, syncT = 0;
 const sOn = () => !!(sget(SK.token, '') && sget(SK.repo, ''));
 function syncLabel() {
